@@ -1,0 +1,37 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block admin %}
+    <h1>Victime index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>photo</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for victime in victimes %}
+            <tr>
+                <td><img src="{{asset('images/victimes/' ~ victime.photo) }}" alt="Moi" class="img-fluid"></td>
+                <td>{{ victime.nom }}</td>
+                <td>{{ victime.prenom }}</td>
+                <td>{{ victime.description }}</td>
+                <td>
+                    <a href="{{ path('victime_show', {'id': victime.id}) }}">show</a>
+                    <a href="{{ path('victime_edit', {'id': victime.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('victime_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Victime{% endblock %}
+
+{% block body %}
+    <h1>{{victime.prenom}} {{victime.nom}}</h1>
+
+    <div class="row">
+          <div class="portrait col-8">
+            <p style="color:#ffffff;">{{victime.description}}</p>
+          </div>
+
+          <div class="col-4">
+            <div class="row">
+                {% for v in victimes %}
+                    
+                    {% if loop.index %4  %}
+                        <div class="col-3">
+                    {% endif %}
+                        <a href="{{ path('victime_show', {'id': victime.id}) }}">
+                            <img src="{{asset('images/victimes/' ~ victime.photo) }}" alt="Moi" class="img-fluid">
+                        </a>
+                    {% if loop.index %3 or loop.last %}
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+          </div>
+    </div>
+
+    <a href="{{ path('victime_index') }}">back to list</a>
+
+    <a href="{{ path('victime_edit', {'id': victime.id}) }}">edit</a>
+
+    {{ include('victime/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous demandons justice{% endblock %}
+
+{% block body %}
+    <div class="row">
+
+          
+            
+                {% for victime in victimes %}
+                    
+                    {% if loop.index %4  %}
+                        <div class="col-3">
+                    {% endif %}
+                        <a href="{{ path('victime_show', {'id': victime.id}) }}">
+                            <img src="{{asset('images/victimes/' ~ victime.photo) }}" alt="Moi" class="img-fluid">
+                        </a>
+                    {% if loop.index %3 or loop.last %}
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            
+          
+    </div>
+{% endblock %}

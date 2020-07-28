@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Victime{% endblock %}
+
+{% block body %}
+    <h1>Create new Victime</h1>
+
+    {{ include('victime/_form.html.twig') }}
+
+    <a href="{{ path('victime_index') }}">back to list</a>
+{% endblock %}
